@@ -6,6 +6,7 @@ using Dicom;
 using Dicom.Imaging;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using System.Text;
 
 namespace DicomDirReader
 {
@@ -33,10 +34,14 @@ namespace DicomDirReader
                     .Select(subpath => subpath.Replace('\\', '/'))
                     .Select(subpath => Path.GetFullPath(subpath, PathToDicomFolder));
 
+                int namingItx = 0;
                 foreach (var path in seriesPaths)
                 {
+                    if(seriesDirPath.Contains("SUMMARY")) continue;
                     Debug.WriteLine(path);
-                    SaveDicomToPng(path, seriesDirPath);
+                    SaveDicomToPng(path, seriesDirPath, namingItx);
+
+                    namingItx++;
                 }
             }
         }
@@ -86,23 +91,41 @@ namespace DicomDirReader
             return series.LowerLevelDirectoryRecordCollection.Select(img => img.GetString(Dicom.DicomTag.ReferencedFileID));
         }
 
-        private static void SaveDicomToPng(string dicomPath, string outputPath)
+        private static void SaveDicomToPng(string dicomPath, string outputPath, int imgNumber)
         {
             var image = new DicomImage(dicomPath);
             var pixels = image.PixelData.GetFrame(0).Data;
 
-            var pixelsRgb = new List<byte>();
+            var pixelsRgb = new List<Rgb48>();
 
-            for (int i = 0; i < pixels.Length; i++)
+            for (int i = 0; i < pixels.Length; i+=2)
             {
-                pixelsRgb.Add(pixels[i]);
-                pixelsRgb.Add(pixels[i]);
-                pixelsRgb.Add(pixels[i]);
+                Int16 combinedBytes = System.BitConverter.ToInt16(pixels, i);
+                UInt16 mappedBytes = (UInt16)(combinedBytes + Int16.MaxValue / 2);
+                pixelsRgb.Add(new Rgb48(mappedBytes, mappedBytes, mappedBytes));
             }
 
-            var sharpImage = Image.LoadPixelData<Rgb24>(pixelsRgb.ToArray(), image.Width, image.Height);
+            var sharpImage = Image.LoadPixelData<Rgb48>(pixelsRgb.ToArray(), image.Width, image.Height);
 
-            sharpImage.SaveAsBmp(outputPath + "/kanapka");
+            SaveToDebugFile($"{outputPath}/debug.txt", image.Width, image.Height, pixelsRgb.Select(p => p.B).ToList());
+            sharpImage.SaveAsBmp($"{outputPath}/kanapka{imgNumber}.bmp");
+        }
+
+        private static void SaveToDebugFile(string filePath, int imageWidth, int imageHeight, List<UInt16> pixels)
+        {
+            var stringBuilder = new StringBuilder();
+
+            for (int j = 0; j < 100; j++)
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    stringBuilder.Append(pixels[(j * imageHeight) + i]);
+                    stringBuilder.Append(' ');
+                }
+                stringBuilder.AppendLine();
+            }
+
+            File.WriteAllText(filePath, stringBuilder.ToString());
         }
     }
 }
