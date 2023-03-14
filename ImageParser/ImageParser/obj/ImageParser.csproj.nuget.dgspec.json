@@ -42,17 +42,13 @@
               "target": "Package",
               "version": "[5.1.2, )"
             },
-            "SixLabors.ImageSharp": {
-              "target": "Package",
-              "version": "[2.1.3, )"
-            },
             "fo-dicom": {
               "target": "Package",
               "version": "[5.0.3, )"
             },
-            "fo-dicom.Imaging.ImageSharp": {
+            "fo-dicom.ImageSharp": {
               "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[4.0.8, )"
             },
             "fo-dicom.NLog": {
               "target": "Package",
@@ -79,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
         }
       }
     }

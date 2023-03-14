@@ -18,7 +18,9 @@
     <PackageReference Include="fo-dicom" Version="5.0.3" />
     <PackageReference Include="NLog" Version="5.1.2" />
     <PackageReference Include="fo-dicom.NLog" Version="5.0.3" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="2.1.3" />
-    <PackageReference Include="fo-dicom.Imaging.ImageSharp" Version="5.0.3" />
+    <PackageReference Include="fo-dicom.ImageSharp" Version="4.0.8" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SixLabors.ImageSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   </ItemGroup>
 </Project>

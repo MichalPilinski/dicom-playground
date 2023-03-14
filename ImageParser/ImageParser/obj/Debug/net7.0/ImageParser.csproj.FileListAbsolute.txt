@@ -32,4 +32,8 @@
 /Users/michau/Repos/DicomPlayground/ImageParser/ImageParser/bin/Debug/net7.0/runtimes/win/lib/netstandard1.3/System.Data.SqlClient.dll
 /Users/michau/Repos/DicomPlayground/ImageParser/ImageParser/obj/Debug/net7.0/ImageParser.csproj.CopyComplete
 /Users/michau/Repos/DicomPlayground/ImageParser/ImageParser/bin/Debug/net7.0/SixLabors.ImageSharp.dll
-/Users/michau/Repos/DicomPlayground/ImageParser/ImageParser/bin/Debug/net7.0/fo-dicom.Imaging.ImageSharp.dll
+/Users/michau/Repos/DicomPlayground/ImageParser/ImageParser/bin/Debug/net7.0/Dicom.ImageSharp.dll
+/Users/michau/Repos/DicomPlayground/ImageParser/ImageParser/bin/Debug/net7.0/SixLabors.Core.dll
+/Users/michau/Repos/DicomPlayground/ImageParser/ImageParser/bin/Debug/net7.0/SixLabors.Fonts.dll
+/Users/michau/Repos/DicomPlayground/ImageParser/ImageParser/bin/Debug/net7.0/SixLabors.ImageSharp.Drawing.dll
+/Users/michau/Repos/DicomPlayground/ImageParser/ImageParser/bin/Debug/net7.0/SixLabors.Shapes.dll

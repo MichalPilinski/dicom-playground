@@ -55,17 +55,22 @@
           "lib/netstandard2.0/fo-dicom.core.dll": {}
         }
       },
-      "fo-dicom.Imaging.ImageSharp/5.0.3": {
+      "fo-dicom.ImageSharp/4.0.8": {
         "type": "package",
         "dependencies": {
-          "SixLabors.ImageSharp": "1.0.0",
-          "fo-dicom": "5.0.3"
+          "SixLabors.ImageSharp": "1.0.0-beta0007",
+          "SixLabors.ImageSharp.Drawing": "1.0.0-beta0007",
+          "fo-dicom": "4.0.8"
         },
         "compile": {
-          "lib/netstandard2.1/fo-dicom.Imaging.ImageSharp.dll": {}
+          "lib/netstandard2.0/Dicom.ImageSharp.dll": {
+            "related": ".deps.json;.pdb"
+          }
         },
         "runtime": {
-          "lib/netstandard2.1/fo-dicom.Imaging.ImageSharp.dll": {}
+          "lib/netstandard2.0/Dicom.ImageSharp.dll": {
+            "related": ".deps.json;.pdb"
+          }
         }
       },
       "fo-dicom.NetCore/4.0.8": {
@@ -182,7 +187,13 @@
           }
         }
       },
-      "Microsoft.NETCore.Platforms/5.0.0": {
+      "Microsoft.Net.Compilers.Toolset/3.1.0": {
+        "type": "package",
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "Microsoft.NETCore.Platforms/3.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -513,19 +524,87 @@
           }
         }
       },
-      "SixLabors.ImageSharp/2.1.3": {
+      "SixLabors.Core/1.0.0-beta0008": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "5.0.0",
-          "System.Text.Encoding.CodePages": "5.0.0"
+          "System.Runtime.CompilerServices.Unsafe": "4.5.1"
         },
         "compile": {
-          "lib/netcoreapp3.1/SixLabors.ImageSharp.dll": {
+          "lib/netcoreapp2.1/SixLabors.Core.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netcoreapp3.1/SixLabors.ImageSharp.dll": {
+          "lib/netcoreapp2.1/SixLabors.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SixLabors.Fonts/1.0.0-beta0009": {
+        "type": "package",
+        "dependencies": {
+          "SixLabors.Core": "1.0.0-beta0008"
+        },
+        "compile": {
+          "lib/netstandard2.0/SixLabors.Fonts.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/SixLabors.Fonts.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SixLabors.ImageSharp/1.0.0-beta0007": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Net.Compilers.Toolset": "3.1.0",
+          "SixLabors.Core": "1.0.0-beta0008",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.1"
+        },
+        "compile": {
+          "lib/netcoreapp2.1/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SixLabors.ImageSharp.Drawing/1.0.0-beta0007": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Net.Compilers.Toolset": "3.1.0",
+          "SixLabors.Fonts": "1.0.0-beta0009",
+          "SixLabors.ImageSharp": "1.0.0-beta0007",
+          "SixLabors.Shapes": "1.0.0-beta0009"
+        },
+        "compile": {
+          "lib/netcoreapp2.1/SixLabors.ImageSharp.Drawing.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/SixLabors.ImageSharp.Drawing.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SixLabors.Shapes/1.0.0-beta0009": {
+        "type": "package",
+        "dependencies": {
+          "SixLabors.Core": "1.0.0-beta0008"
+        },
+        "compile": {
+          "lib/netstandard2.0/SixLabors.Shapes.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/SixLabors.Shapes.dll": {
             "related": ".xml"
           }
         }
@@ -1361,10 +1440,10 @@
           }
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/5.0.0": {
+      "System.Runtime.CompilerServices.Unsafe/4.5.1": {
         "type": "package",
         "compile": {
-          "ref/netstandard2.1/System.Runtime.CompilerServices.Unsafe.dll": {
+          "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {
             "related": ".xml"
           }
         },
@@ -1776,10 +1855,10 @@
           }
         }
       },
-      "System.Text.Encoding.CodePages/5.0.0": {
+      "System.Text.Encoding.CodePages/4.6.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "5.0.0"
+          "Microsoft.NETCore.Platforms": "3.0.0"
         },
         "compile": {
           "lib/netstandard2.0/System.Text.Encoding.CodePages.dll": {
@@ -2119,20 +2198,18 @@
         "lib/netstandard2.0/fo-dicom.core.dll"
       ]
     },
-    "fo-dicom.Imaging.ImageSharp/5.0.3": {
-      "sha512": "VYbKFQsj/3btaXIoa4UlPx5SUhU9VQuzUC+zb++dyegvhHqo6Ovj3f99fK4FXrKl/yX2lLZljT0fTMcqMXlELA==",
+    "fo-dicom.ImageSharp/4.0.8": {
+      "sha512": "H0CW51weeevAjkYHJ5/co9Mt/jlCii7yULlwPKQI+yC6TIsYWpNOPW88PgiCDnq0mtsMOoXzTmgLMv6pEeCnjQ==",
       "type": "package",
-      "path": "fo-dicom.imaging.imagesharp/5.0.3",
+      "path": "fo-dicom.imagesharp/4.0.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "FellowOakSquareTransp.png",
-        "fo-dicom.imaging.imagesharp.5.0.3.nupkg.sha512",
-        "fo-dicom.imaging.imagesharp.nuspec",
-        "lib/netstandard2.0/FO-DICOM.Imaging.ImageSharp.xml",
-        "lib/netstandard2.0/fo-dicom.Imaging.ImageSharp.dll",
-        "lib/netstandard2.1/FO-DICOM.Imaging.ImageSharp.xml",
-        "lib/netstandard2.1/fo-dicom.Imaging.ImageSharp.dll"
+        "fo-dicom.imagesharp.4.0.8.nupkg.sha512",
+        "fo-dicom.imagesharp.nuspec",
+        "lib/netstandard2.0/Dicom.ImageSharp.deps.json",
+        "lib/netstandard2.0/Dicom.ImageSharp.dll",
+        "lib/netstandard2.0/Dicom.ImageSharp.pdb"
       ]
     },
     "fo-dicom.NetCore/4.0.8": {
@@ -2246,18 +2323,217 @@
         "microsoft.extensions.primitives.nuspec"
       ]
     },
-    "Microsoft.NETCore.Platforms/5.0.0": {
-      "sha512": "VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
+    "Microsoft.Net.Compilers.Toolset/3.1.0": {
+      "sha512": "/iwBIkmusIUlBrln8AbKpYIcSGnImCYUMFSC3QOpGuOmnle44w2ORyH8IFDi8rbQNKjDH9HBmtPML/kW3GuxyA==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/5.0.0",
+      "path": "microsoft.net.compilers.toolset/3.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "Icon.png",
+        "ThirdPartyNotices.rtf",
+        "build/Microsoft.Net.Compilers.Toolset.props",
+        "microsoft.net.compilers.toolset.3.1.0.nupkg.sha512",
+        "microsoft.net.compilers.toolset.nuspec",
+        "tasks/net472/Microsoft.Build.Tasks.CodeAnalysis.dll",
+        "tasks/net472/Microsoft.CSharp.Core.targets",
+        "tasks/net472/Microsoft.CodeAnalysis.CSharp.Scripting.dll",
+        "tasks/net472/Microsoft.CodeAnalysis.CSharp.dll",
+        "tasks/net472/Microsoft.CodeAnalysis.Scripting.dll",
+        "tasks/net472/Microsoft.CodeAnalysis.VisualBasic.dll",
+        "tasks/net472/Microsoft.CodeAnalysis.dll",
+        "tasks/net472/Microsoft.DiaSymReader.Native.amd64.dll",
+        "tasks/net472/Microsoft.DiaSymReader.Native.x86.dll",
+        "tasks/net472/Microsoft.Managed.Core.targets",
+        "tasks/net472/Microsoft.Managed.EditorConfig.targets",
+        "tasks/net472/Microsoft.VisualBasic.Core.targets",
+        "tasks/net472/System.Buffers.dll",
+        "tasks/net472/System.Collections.Immutable.dll",
+        "tasks/net472/System.Memory.dll",
+        "tasks/net472/System.Numerics.Vectors.dll",
+        "tasks/net472/System.Reflection.Metadata.dll",
+        "tasks/net472/System.Runtime.CompilerServices.Unsafe.dll",
+        "tasks/net472/System.Text.Encoding.CodePages.dll",
+        "tasks/net472/System.Threading.Tasks.Extensions.dll",
+        "tasks/net472/VBCSCompiler.exe",
+        "tasks/net472/VBCSCompiler.exe.config",
+        "tasks/net472/cs/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/net472/cs/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll",
+        "tasks/net472/cs/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/net472/cs/Microsoft.CodeAnalysis.Scripting.resources.dll",
+        "tasks/net472/cs/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/net472/cs/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/net472/csc.exe",
+        "tasks/net472/csc.exe.config",
+        "tasks/net472/csc.rsp",
+        "tasks/net472/csi.exe",
+        "tasks/net472/csi.exe.config",
+        "tasks/net472/csi.rsp",
+        "tasks/net472/de/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/net472/de/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll",
+        "tasks/net472/de/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/net472/de/Microsoft.CodeAnalysis.Scripting.resources.dll",
+        "tasks/net472/de/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/net472/de/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/net472/es/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/net472/es/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll",
+        "tasks/net472/es/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/net472/es/Microsoft.CodeAnalysis.Scripting.resources.dll",
+        "tasks/net472/es/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/net472/es/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/net472/fr/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/net472/fr/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll",
+        "tasks/net472/fr/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/net472/fr/Microsoft.CodeAnalysis.Scripting.resources.dll",
+        "tasks/net472/fr/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/net472/fr/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/net472/it/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/net472/it/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll",
+        "tasks/net472/it/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/net472/it/Microsoft.CodeAnalysis.Scripting.resources.dll",
+        "tasks/net472/it/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/net472/it/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/net472/ja/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/net472/ja/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll",
+        "tasks/net472/ja/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/net472/ja/Microsoft.CodeAnalysis.Scripting.resources.dll",
+        "tasks/net472/ja/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/net472/ja/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/net472/ko/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/net472/ko/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll",
+        "tasks/net472/ko/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/net472/ko/Microsoft.CodeAnalysis.Scripting.resources.dll",
+        "tasks/net472/ko/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/net472/ko/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/net472/pl/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/net472/pl/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll",
+        "tasks/net472/pl/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/net472/pl/Microsoft.CodeAnalysis.Scripting.resources.dll",
+        "tasks/net472/pl/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/net472/pl/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/net472/pt-BR/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/net472/pt-BR/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll",
+        "tasks/net472/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/net472/pt-BR/Microsoft.CodeAnalysis.Scripting.resources.dll",
+        "tasks/net472/pt-BR/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/net472/pt-BR/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/net472/ru/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/net472/ru/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll",
+        "tasks/net472/ru/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/net472/ru/Microsoft.CodeAnalysis.Scripting.resources.dll",
+        "tasks/net472/ru/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/net472/ru/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/net472/tr/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/net472/tr/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll",
+        "tasks/net472/tr/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/net472/tr/Microsoft.CodeAnalysis.Scripting.resources.dll",
+        "tasks/net472/tr/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/net472/tr/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/net472/vbc.exe",
+        "tasks/net472/vbc.exe.config",
+        "tasks/net472/vbc.rsp",
+        "tasks/net472/zh-Hans/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/net472/zh-Hans/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll",
+        "tasks/net472/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/net472/zh-Hans/Microsoft.CodeAnalysis.Scripting.resources.dll",
+        "tasks/net472/zh-Hans/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/net472/zh-Hans/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/net472/zh-Hant/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/net472/zh-Hant/Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll",
+        "tasks/net472/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/net472/zh-Hant/Microsoft.CodeAnalysis.Scripting.resources.dll",
+        "tasks/net472/zh-Hant/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/net472/zh-Hant/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/Microsoft.Build.Tasks.CodeAnalysis.dll",
+        "tasks/netcoreapp2.1/Microsoft.CSharp.Core.targets",
+        "tasks/netcoreapp2.1/Microsoft.Managed.Core.targets",
+        "tasks/netcoreapp2.1/Microsoft.Managed.EditorConfig.targets",
+        "tasks/netcoreapp2.1/Microsoft.VisualBasic.Core.targets",
+        "tasks/netcoreapp2.1/bincore/Microsoft.CodeAnalysis.CSharp.dll",
+        "tasks/netcoreapp2.1/bincore/Microsoft.CodeAnalysis.VisualBasic.dll",
+        "tasks/netcoreapp2.1/bincore/Microsoft.CodeAnalysis.dll",
+        "tasks/netcoreapp2.1/bincore/System.Runtime.CompilerServices.Unsafe.dll",
+        "tasks/netcoreapp2.1/bincore/System.Text.Encoding.CodePages.dll",
+        "tasks/netcoreapp2.1/bincore/VBCSCompiler.deps.json",
+        "tasks/netcoreapp2.1/bincore/VBCSCompiler.dll",
+        "tasks/netcoreapp2.1/bincore/VBCSCompiler.runtimeconfig.json",
+        "tasks/netcoreapp2.1/bincore/cs/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp2.1/bincore/cs/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/netcoreapp2.1/bincore/cs/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/bincore/csc.deps.json",
+        "tasks/netcoreapp2.1/bincore/csc.dll",
+        "tasks/netcoreapp2.1/bincore/csc.runtimeconfig.json",
+        "tasks/netcoreapp2.1/bincore/de/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp2.1/bincore/de/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/netcoreapp2.1/bincore/de/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/bincore/es/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp2.1/bincore/es/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/netcoreapp2.1/bincore/es/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/bincore/fr/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp2.1/bincore/fr/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/netcoreapp2.1/bincore/fr/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/bincore/it/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp2.1/bincore/it/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/netcoreapp2.1/bincore/it/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/bincore/ja/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp2.1/bincore/ja/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/netcoreapp2.1/bincore/ja/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/bincore/ko/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp2.1/bincore/ko/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/netcoreapp2.1/bincore/ko/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/bincore/pl/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp2.1/bincore/pl/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/netcoreapp2.1/bincore/pl/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/bincore/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp2.1/bincore/pt-BR/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/netcoreapp2.1/bincore/pt-BR/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/bincore/ru/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp2.1/bincore/ru/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/netcoreapp2.1/bincore/ru/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/bincore/runtimes/win-x64/native/Microsoft.DiaSymReader.Native.amd64.dll",
+        "tasks/netcoreapp2.1/bincore/runtimes/win-x86/native/Microsoft.DiaSymReader.Native.x86.dll",
+        "tasks/netcoreapp2.1/bincore/runtimes/win/lib/netcoreapp2.0/System.Text.Encoding.CodePages.dll",
+        "tasks/netcoreapp2.1/bincore/runtimes/win/native/Microsoft.DiaSymReader.Native.amd64.dll",
+        "tasks/netcoreapp2.1/bincore/runtimes/win/native/Microsoft.DiaSymReader.Native.arm.dll",
+        "tasks/netcoreapp2.1/bincore/runtimes/win/native/Microsoft.DiaSymReader.Native.x86.dll",
+        "tasks/netcoreapp2.1/bincore/runtimes/win8-arm/native/Microsoft.DiaSymReader.Native.arm.dll",
+        "tasks/netcoreapp2.1/bincore/tr/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp2.1/bincore/tr/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/netcoreapp2.1/bincore/tr/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/bincore/vbc.deps.json",
+        "tasks/netcoreapp2.1/bincore/vbc.dll",
+        "tasks/netcoreapp2.1/bincore/vbc.runtimeconfig.json",
+        "tasks/netcoreapp2.1/bincore/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp2.1/bincore/zh-Hans/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/netcoreapp2.1/bincore/zh-Hans/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/bincore/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp2.1/bincore/zh-Hant/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "tasks/netcoreapp2.1/bincore/zh-Hant/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/cs/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/de/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/es/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/fr/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/it/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/ja/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/ko/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/pl/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/pt-BR/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/ru/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/tr/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/zh-Hans/Microsoft.Build.Tasks.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp2.1/zh-Hant/Microsoft.Build.Tasks.CodeAnalysis.resources.dll"
+      ]
+    },
+    "Microsoft.NETCore.Platforms/3.0.0": {
+      "sha512": "TsETIgVJb/AKoYfSP+iCxkuly5d3inZjTdx/ItZLk2CxY85v8083OBS3uai84kK3/baLnS5/b5XGs6zR7SuuHQ==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+        "microsoft.netcore.platforms.3.0.0.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
@@ -2684,10 +2960,44 @@
         "runtimes/win7-x86/native/sni.dll"
       ]
     },
-    "SixLabors.ImageSharp/2.1.3": {
-      "sha512": "8yonNRWX3vUE9k29ta0Hbfa0AEc0hbDjSH/nZ3vOTJEXmY6hLnGsjDKoz96Z+AgOsrdkAu6PdL/Ebaf70aitzw==",
+    "SixLabors.Core/1.0.0-beta0008": {
+      "sha512": "rrKPDN107tVOh+mUoNh+kHELa7WfYZREPPbYdiKJ3Rd6dex/UgDWDGBOjPJn4BBhmts/VGuaXMXyfT/BwiuH2g==",
       "type": "package",
-      "path": "sixlabors.imagesharp/2.1.3",
+      "path": "sixlabors.core/1.0.0-beta0008",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp2.0/SixLabors.Core.dll",
+        "lib/netcoreapp2.0/SixLabors.Core.xml",
+        "lib/netcoreapp2.1/SixLabors.Core.dll",
+        "lib/netcoreapp2.1/SixLabors.Core.xml",
+        "lib/netstandard1.3/SixLabors.Core.dll",
+        "lib/netstandard1.3/SixLabors.Core.xml",
+        "lib/netstandard2.0/SixLabors.Core.dll",
+        "lib/netstandard2.0/SixLabors.Core.xml",
+        "sixlabors.core.1.0.0-beta0008.nupkg.sha512",
+        "sixlabors.core.nuspec"
+      ]
+    },
+    "SixLabors.Fonts/1.0.0-beta0009": {
+      "sha512": "jCSh8Ei/epW1zInmRReIovIzHGPB1zifwDaj4+Yb7aGCs5MbRHi69kl2+QM9Ov5X19IgKhHn833dd4S0OQ3sEw==",
+      "type": "package",
+      "path": "sixlabors.fonts/1.0.0-beta0009",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.3/SixLabors.Fonts.dll",
+        "lib/netstandard1.3/SixLabors.Fonts.xml",
+        "lib/netstandard2.0/SixLabors.Fonts.dll",
+        "lib/netstandard2.0/SixLabors.Fonts.xml",
+        "sixlabors.fonts.1.0.0-beta0009.nupkg.sha512",
+        "sixlabors.fonts.nuspec"
+      ]
+    },
+    "SixLabors.ImageSharp/1.0.0-beta0007": {
+      "sha512": "R7BMm1MPyE3n4kSmTrdhB6iQmIZmSjBhnHG8mYrfi9t5CmIIgXhmGHHLZTZHa17Ka4b5bhUUqssAVEHDlDqnuQ==",
+      "type": "package",
+      "path": "sixlabors.imagesharp/1.0.0-beta0007",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2695,15 +3005,44 @@
         "lib/net472/SixLabors.ImageSharp.xml",
         "lib/netcoreapp2.1/SixLabors.ImageSharp.dll",
         "lib/netcoreapp2.1/SixLabors.ImageSharp.xml",
-        "lib/netcoreapp3.1/SixLabors.ImageSharp.dll",
-        "lib/netcoreapp3.1/SixLabors.ImageSharp.xml",
+        "lib/netstandard1.3/SixLabors.ImageSharp.dll",
+        "lib/netstandard1.3/SixLabors.ImageSharp.xml",
         "lib/netstandard2.0/SixLabors.ImageSharp.dll",
         "lib/netstandard2.0/SixLabors.ImageSharp.xml",
-        "lib/netstandard2.1/SixLabors.ImageSharp.dll",
-        "lib/netstandard2.1/SixLabors.ImageSharp.xml",
-        "sixlabors.imagesharp.128.png",
-        "sixlabors.imagesharp.2.1.3.nupkg.sha512",
+        "sixlabors.imagesharp.1.0.0-beta0007.nupkg.sha512",
         "sixlabors.imagesharp.nuspec"
+      ]
+    },
+    "SixLabors.ImageSharp.Drawing/1.0.0-beta0007": {
+      "sha512": "luF+sbh2mMdQLa7W5icWsaqp3M3cAPF73Tv8hti7KVxBywKFFEibunqAUYUAJLTiuSpScnjYAhTqHYGuXBChmw==",
+      "type": "package",
+      "path": "sixlabors.imagesharp.drawing/1.0.0-beta0007",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp2.1/SixLabors.ImageSharp.Drawing.dll",
+        "lib/netcoreapp2.1/SixLabors.ImageSharp.Drawing.xml",
+        "lib/netstandard1.3/SixLabors.ImageSharp.Drawing.dll",
+        "lib/netstandard1.3/SixLabors.ImageSharp.Drawing.xml",
+        "lib/netstandard2.0/SixLabors.ImageSharp.Drawing.dll",
+        "lib/netstandard2.0/SixLabors.ImageSharp.Drawing.xml",
+        "sixlabors.imagesharp.drawing.1.0.0-beta0007.nupkg.sha512",
+        "sixlabors.imagesharp.drawing.nuspec"
+      ]
+    },
+    "SixLabors.Shapes/1.0.0-beta0009": {
+      "sha512": "H9c2mZ4JYHdkv1xFfU3f2kUE8qzzFrlc9tIPVewz/tqp3sZh91fvXZM520MaJGDvh/+BnsBnjEgkArZqDy36Yw==",
+      "type": "package",
+      "path": "sixlabors.shapes/1.0.0-beta0009",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.3/SixLabors.Shapes.dll",
+        "lib/netstandard1.3/SixLabors.Shapes.xml",
+        "lib/netstandard2.0/SixLabors.Shapes.dll",
+        "lib/netstandard2.0/SixLabors.Shapes.xml",
+        "sixlabors.shapes.1.0.0-beta0009.nupkg.sha512",
+        "sixlabors.shapes.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -4975,33 +5314,26 @@
         "system.runtime.nuspec"
       ]
     },
-    "System.Runtime.CompilerServices.Unsafe/5.0.0": {
-      "sha512": "ZD9TMpsmYJLrxbbmdvhwt9YEgG5WntEnZ/d1eH8JBX9LBp+Ju8BSBhUGbZMNVHHomWo2KVImJhTDl2hIgw/6MA==",
+    "System.Runtime.CompilerServices.Unsafe/4.5.1": {
+      "sha512": "Zh8t8oqolRaFa9vmOZfdQm/qKejdqz0J9kr7o2Fu0vPeoH3BL1EOXipKWwkWtLT1JPzjByrF19fGuFlNbmPpiw==",
       "type": "package",
-      "path": "system.runtime.compilerservices.unsafe/5.0.0",
+      "path": "system.runtime.compilerservices.unsafe/4.5.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/net45/System.Runtime.CompilerServices.Unsafe.dll",
-        "lib/net45/System.Runtime.CompilerServices.Unsafe.xml",
         "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.xml",
         "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
         "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "ref/net461/System.Runtime.CompilerServices.Unsafe.dll",
-        "ref/net461/System.Runtime.CompilerServices.Unsafe.xml",
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "ref/netstandard2.1/System.Runtime.CompilerServices.Unsafe.dll",
-        "ref/netstandard2.1/System.Runtime.CompilerServices.Unsafe.xml",
-        "system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -5822,14 +6154,13 @@
         "system.text.encoding.nuspec"
       ]
     },
-    "System.Text.Encoding.CodePages/5.0.0": {
-      "sha512": "NyscU59xX6Uo91qvhOs2Ccho3AR2TnZPomo1Z0K6YpyztBPM/A5VbkzOO19sy3A3i1TtEnTxA7bCe3Us+r5MWg==",
+    "System.Text.Encoding.CodePages/4.6.0": {
+      "sha512": "OCUK9C/U97+UheVwo+JE+IUcKySUE3Oe+BcHhVtQrvmKSUFLrUDO8B5zEPRL6mBGbczxZp4w1boSck6/fw4dog==",
       "type": "package",
-      "path": "system.text.encoding.codepages/5.0.0",
+      "path": "system.text.encoding.codepages/4.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
@@ -5857,7 +6188,7 @@
         "runtimes/win/lib/netstandard1.3/System.Text.Encoding.CodePages.dll",
         "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
         "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.xml",
-        "system.text.encoding.codepages.5.0.0.nupkg.sha512",
+        "system.text.encoding.codepages.4.6.0.nupkg.sha512",
         "system.text.encoding.codepages.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -6612,9 +6943,8 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "NLog >= 5.1.2",
-      "SixLabors.ImageSharp >= 2.1.3",
       "fo-dicom >= 5.0.3",
-      "fo-dicom.Imaging.ImageSharp >= 5.0.3",
+      "fo-dicom.ImageSharp >= 4.0.8",
       "fo-dicom.NLog >= 5.0.3",
       "fo-dicom.NetCore >= 4.0.8"
     ]
@@ -6660,17 +6990,13 @@
             "target": "Package",
             "version": "[5.1.2, )"
           },
-          "SixLabors.ImageSharp": {
-            "target": "Package",
-            "version": "[2.1.3, )"
-          },
           "fo-dicom": {
             "target": "Package",
             "version": "[5.0.3, )"
           },
-          "fo-dicom.Imaging.ImageSharp": {
+          "fo-dicom.ImageSharp": {
             "target": "Package",
-            "version": "[5.0.3, )"
+            "version": "[4.0.8, )"
           },
           "fo-dicom.NLog": {
             "target": "Package",
@@ -6697,7 +7023,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
       }
     }
   }
