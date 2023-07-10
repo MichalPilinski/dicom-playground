@@ -2,7 +2,7 @@ import { ILoadOrder } from "../../interfaces/load-order/load-order.interface.js"
 import { ISchema } from "../../interfaces/schema/schema.interface.js";
 import { Frame } from "../../models/frame/frame.model.js";
 
-export function generateLoadOrder(schema: ISchema, startPoint: number) {
+export function generateLinearLoadOrder(schema: ISchema, startPoint: number): ILoadOrder[] {
     const frames = schema.frames;
     
     const loadedSet = new Set<Frame>();
@@ -20,7 +20,7 @@ export function generateLoadOrder(schema: ISchema, startPoint: number) {
             loadedSet.add(item);
         }
 
-        output.push({
+        output.push({ 
             toLoad: notSeen,
             order
         });
@@ -29,4 +29,19 @@ export function generateLoadOrder(schema: ISchema, startPoint: number) {
     }
 
     return output; 
+}
+
+export function logLinearLoadOrder(loadOrder: ILoadOrder[]) {
+    loadOrder.sort((a, b) => a.order - b.order);
+
+    console.log('LOAD_ORDER_START');
+    for(let loadOrderItem of loadOrder) {
+        const rowHeader = `C_${loadOrderItem.order}:`;
+        const body = loadOrderItem.toLoad.map(frame => frame.index).sort((a, b) => a - b);
+
+        const padding = ' '.repeat(7 - rowHeader.length);
+
+        console.log(`${rowHeader}${padding}${body}`);
+    }
+    console.log('LOAD_ORDER_END');
 }
