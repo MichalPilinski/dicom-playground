@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^20.3.3"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "exec": "node dist/index.js",
+    "all": "npm run build && npm run exec"
+  }
+}
