@@ -1,5 +1,5 @@
 import { FrameType } from "../enums/frame-type.enum.js";
-import { DecodeInfo } from "../interfaces/decode-info.interface.js";
+import { DecodeInfo, addDecodeInfos } from "../models/decode-info.model.js";
 import { ISchema } from "../interfaces/schema.interface.js";
 import { Frame } from "../models/frame.model.js";
 
@@ -13,22 +13,44 @@ export class Simulator {
         this.cachedFrames = new Set<number>();
     }
 
-    decodeFrame(index: number): DecodeInfo {
-        if(this.cachedFrames.has(index)) return {time: 0, size: 0, dependencies: []};
+    decodeFrame(sourceIndex: number) {
+        const decodeInfo = new DecodeInfo();
 
-        const frame = this.frames.find(item => item.index === index);
-        if(frame.type === FrameType.I) return {time: 0, size: frame.size, dependencies: [index]}
+        const subDecodeFrame = (index: number): DecodeInfo => {
+            if(this.cachedFrames.has(index)) return;
 
-        let decodeInfo: DecodeInfo = {time: frame.decodeTime, size: frame.size, dependencies: [index]};
-        for(let parent of frame.parents) {
-            const parentInfo = this.decodeFrame(parent.index);
+            const frame = this.frames.find((item: Frame) => item.index === index);
+            decodeInfo.dependencies.push(index);
 
-            decodeInfo.size += parentInfo.size;
-            decodeInfo.time += parentInfo.time;
-            decodeInfo.dependencies.push(...parentInfo.dependencies);
+            switch(frame.type) {
+                case FrameType.I: 
+                    this.cachedFrames.add(index); 
+                    decodeInfo.iCount++;
+
+                    return;
+                case FrameType.P:
+                    decodeInfo.pCount++;
+                    break;
+                case FrameType.B:
+                    decodeInfo.bCount++;
+                    break;
+            }
+
+            for(let parent of frame.parents) {
+                const parentInfo = this.decodeFrame(parent.index);
+                addDecodeInfos(decodeInfo, parentInfo);
+            }
+            
+            decodeInfo.decodingsCount++;
+
+            this.cachedFrames.add(index);
+
+            return decodeInfo;
         }
-        
+
+        subDecodeFrame(sourceIndex);
         decodeInfo.dependencies = [...new Set(decodeInfo.dependencies)].sort((a, b) => a - b);
+
         return decodeInfo;
     }
 }
