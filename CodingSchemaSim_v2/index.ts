@@ -2,7 +2,7 @@ import { Simulator } from "./classes/simulator.class.js";
 import { getFlattenedSchema, logFlattenedSchema } from "./helpers/schema-flattener.helper.js";
 import { BSchema } from "./models/b-schema.model.js";
 
-const bSchema = new BSchema(15);
+const bSchema = new BSchema(6);
 //bSchema.log();
 
 const flattenedSchema = getFlattenedSchema(bSchema);

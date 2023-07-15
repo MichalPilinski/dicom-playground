@@ -1,15 +1,17 @@
 import { DecodeTimeMapper } from "../classes/decode-time.mapper.js";
 import { FrameSizeMapper } from "../classes/frame-size.mapper.js";
 import { FrameType } from "../enums/frame-type.enum.js";
-import { ISchema } from "../interfaces/schema.interface.js";
 import { Frame } from "./frame.model.js";
+import { Schema } from "./schema.model.js";
 
-export class BSchema implements ISchema {
+export class BSchema extends Schema {
     public frames: Frame[];
 
     private length: number;
 
     constructor(generation: number) {
+        super();
+        
         this.frames = [];
 
         this.length = this.getNthPiramidLength(generation);
@@ -68,20 +70,5 @@ export class BSchema implements ISchema {
         });
 
         return [getBaseFrame(0), getBaseFrame(this.length - 1)];
-    }
-
-    public log() {
-        console.log('B_GROUP_START');
-
-        for(let i = 0; i < this.frames.length; i++) {
-            const rowHeader = `F_${i}:`;
-            const sortedBGroup = this.frames[i].parents.map(frame => frame.index);
-
-            const padding = ' '.repeat(7 - rowHeader.length);
-
-            console.log(`${rowHeader}${padding}${sortedBGroup}`);
-        }
-
-        console.log('B_GROUP_END');
     }
 }
